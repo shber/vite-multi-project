@@ -1,15 +1,13 @@
+<!--
+ * @Author: Shber
+ * @Date: 2024-01-22 19:46:32
+ * @LastEditors: Shber
+ * @LastEditTime: 2024-01-26 16:52:30
+ * @Description: 
+-->
 <template>
-  首页
   <router-view></router-view>
 </template>
 <script setup lang="ts"></script>
-<style lang="scss">
-#app {
-  font-family: PingFangSC-Regular;
-  font-size: 3.733vw;
-  color: #fff;
-  font-weight: normal;
-  line-height: 1.5;
-  letter-spacing: 0;
-}
+<style lang="scss" scoped>
 </style>

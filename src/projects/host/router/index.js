@@ -1,3 +1,10 @@
+/*
+ * @Author: Shber
+ * @Date: 2024-01-26 12:02:03
+ * @LastEditors: Shber
+ * @LastEditTime: 2024-01-26 16:47:39
+ * @Description: 
+ */
 import { createRouter, createWebHashHistory } from 'vue-router'
 const router = createRouter({
   history: createWebHashHistory(), // hash模式：createWebHashHistory，history模式：createWebHistory
@@ -5,7 +12,7 @@ const router = createRouter({
     {
       path: '/home',
       name: 'index',
-      component: () => import('@projects/页面名称/views/index.vue'),
+      component: () => import('@projects/host/views/index.vue'),
       meta: { title: '首页' }
     }
   ]

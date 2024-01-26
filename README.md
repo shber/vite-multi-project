@@ -52,10 +52,12 @@
 
 ```js
 npm run new:page
-//然后会提示：请输入要生成的'页面名称:页面描述'、会生成在 /src/Project 目录下
+//然后会提示：请输入要生成的'页面名称:页面描述'、会生成在 /src/projects 目录下
 //注意： 有两个页面模版，如果要用ts，可以执行  npm run new:page --ts
 例如输入：mypage:我的页面
 //完成后 会在 scripts/multiPages.json 中生成对应的数据 后期删除需要删除对应的数据来保持一致 内容数据如下：
+//注意：router/index.js 路径名暂时无法根据创建的文件名同步更改，需要手动在创建的页面/模块中修改
+
 [
   { "chunk": "pageone", "chunkName": "页面1"},
   { "chunk": "pagetwo", "chunkName": "页面2" },

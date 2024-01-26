@@ -6,7 +6,7 @@ const resolve = (__dirname, ...file) => path.resolve(__dirname, ...file)
 const log = (message) => console.log(chalk.green(`${message}`))
 const successLog = (message) => console.log(chalk.blue(`${message}`))
 const errorLog = (error) => console.log(chalk.red(`${error}`))
-log('请输入要生成的"页面名称:页面描述"、会生成在 /src/Project 目录下')
+log('请输入要生成的"页面名称:页面描述"、会生成在 /src/projects 目录下')
 process.stdin.on('data', async (chunk) => {
   // 获取输入的信息
   const content = String(chunk).trim().toString()
@@ -19,8 +19,10 @@ process.stdin.on('data', async (chunk) => {
   const inputName = content.split(':')[0]
   const inputDesc = content.split(':')[1] || inputName
   const isTs = process.env.npm_config_ts
-  successLog(`将在 /src/Project 目录下创建 ${inputName} 文件夹`)
-  const targetPath = resolve('./src/Project', inputName)
+  successLog(`将在 /src/projects 目录下创建 ${inputName} 文件夹`)
+  successLog(`请手动修改 /src/projects/router/index.js里的路径`)
+
+  const targetPath = resolve('./src/projects', inputName)
   // 判断同名文件夹是否存在
   const pageExists = fs.existsSync(targetPath)
   if (pageExists) {
@@ -47,6 +49,8 @@ process.stdin.on('data', async (chunk) => {
         }
         datas.push(obj)
         setFile(datas)
+      }else{
+        errorLog('已存在该文件名称，请重新输入')
       }
     }
   )
