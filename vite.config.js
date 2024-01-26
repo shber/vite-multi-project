@@ -2,7 +2,7 @@
  * @Author: Shber
  * @Date: 2024-01-22 18:34:47
  * @LastEditors: Shber
- * @LastEditTime: 2024-01-22 21:38:08
+ * @LastEditTime: 2024-01-22 21:46:37
  * @Description: 
  */
 // import fs from "fs";
@@ -26,6 +26,24 @@ const errorLog = (error) => console.log(chalk.red(`${error}`))
 
 //获取指定的单页面入口
 const getEnterPages = () => {
+  if (!npm_config_page)
+    errorLog(
+      '⚠️ 警告 -- 请在命令行后以 `--page=页面名称` 格式指定页面名称！'
+    )
+  const filterArr = project.filter(
+    (item) => item.chunk.toLowerCase() == npm_config_page.toLowerCase()
+  )
+  if (!filterArr.length)
+    errorLog(
+      '⚠️ 警告 -- 不存在此页面，请检查页面名称！'
+    )
+
+  return {
+    [npm_config_page]: path.resolve(
+      __dirname,
+      `src/projects/${npm_config_page}/index.html`
+    )
+  }
 }
 
 // 打包提示
